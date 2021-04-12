@@ -1,0 +1,156 @@
+﻿
+@{
+    Layout = null;
+        Layout = "~/Views/Shared/_Master.cshtml";
+}
+@{
+    var data = ViewBag.carDetails;
+}
+<script>
+        function openModal() {
+            $("#myModal").modal();
+        }
+
+</script>
+<div class="m-auto">
+    <h1>Edit Car</h1>
+
+</div>
+<div class="row">
+    <div class="col-lg-10 m-auto">
+        <div class="contact-form">
+            <form action="Update">
+                <div class="row margin-row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Car Name <br />
+                            <input type="text" name="CarName" value="@data.Rows[0]["carName"]" placeholder="Car Name" />
+                        </div>
+                    </div>
+                    <input style="display:none" type="text" name="carId" value="@data.Rows[0]["carId"]" placeholder="Car Name" />
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Category <br />
+
+                            @Html.DropDownList("categoryId", ViewBag.CategoryList as SelectList, "--Select Category--", new { @class = "select-custom" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Car Make <br />&nbsp;
+                            <input type="text" name="CarMake" value="@data.Rows[0]["carMake"]" placeholder="Car Make" />
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Car Model <br />&nbsp;
+                            <input type="text" name="CarModel" value="@data.Rows[0]["carModel"]" placeholder="Car Model" />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Num Of Doors <br />&nbsp;
+                            <input type="text" name="CarDoors" value="@data.Rows[0]["carDoors"]" />
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Num Of Seats <br />&nbsp;
+                            <input type="text" name="NumOfSeats" value="@data.Rows[0]["carSeats"]" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Cars has AC? <br />&nbsp;
+                            @Html.DropDownList("hasAC", ViewBag.ACList as SelectList, "--Select--", new { @class = "select-custom" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Type of Car <br />&nbsp;
+                            @Html.DropDownList("carType", ViewBag.carType as SelectList, "--Select--", new { @class = "select-custom" })
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Rental Charges(Per Day) <br />&nbsp;
+                            <input type="text" name="rentalCharge" value="@data.Rows[0]["rentalCharge"]" />
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Mileage Allowed <br />&nbsp;
+                            <input type="text" name="mileageAllowed" value="@data.Rows[0]["mileageAllowed"]" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row" style="margin-bottom: 30px;">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="name-input">
+                            Buffer Days after Return <br />&nbsp;
+                            <input type="number" name="bufferDays" />
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="input-submit">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade modalPopup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:10px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Modal title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Car Added Successfully.</h3>
+            </div>
+            <div class="modal-footer">
+
+                <div class="input-submit">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.JavaScriptFunction != null)
+{
+    <script type="text/javascript">
+            @Html.Raw(ViewBag.JavaScriptFunction)
+    </script>
+}

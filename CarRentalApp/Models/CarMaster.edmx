@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="car_master">
+          <Key>
+            <PropertyRef Name="carId" />
+          </Key>
+          <Property Name="carId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryId" Type="int" Nullable="false" />
+          <Property Name="carName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="carModel" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="carMake" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="carDoors" Type="int" Nullable="false" />
+          <Property Name="carSeats" Type="int" Nullable="false" />
+          <Property Name="carAC" Type="bit" />
+          <Property Name="carType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="rentalCharge" Type="int" Nullable="false" />
+          <Property Name="mileageAllowed" Type="varchar" MaxLength="50" />
+          <Property Name="carStatus" Type="bit" />
+          <Property Name="dateAdded" Type="datetime" />
+          <Property Name="addedBy" Type="varchar" MaxLength="50" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="modifiedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="category_master">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateAdded" Type="datetime" />
+          <Property Name="addedBy" Type="varchar" MaxLength="50" />
+          <Property Name="modifiedBy" Type="varchar" MaxLength="50" />
+          <Property Name="modifiedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__car_maste__categ__34C8D9D1">
+          <End Role="category_master" Type="Self.category_master" Multiplicity="1" />
+          <End Role="car_master" Type="Self.car_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_master">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="car_master">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarModelStoreContainer">
+          <EntitySet Name="car_master" EntityType="Self.car_master" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category_master" EntityType="Self.category_master" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__car_maste__categ__34C8D9D1" Association="Self.FK__car_maste__categ__34C8D9D1">
+            <End Role="category_master" EntitySet="category_master" />
+            <End Role="car_master" EntitySet="car_master" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="car_master">
+          <Key>
+            <PropertyRef Name="carId" />
+          </Key>
+          <Property Name="carId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryId" Type="Int32" Nullable="false" />
+          <Property Name="carName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="carModel" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="carMake" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="carDoors" Type="Int32" Nullable="false" />
+          <Property Name="carSeats" Type="Int32" Nullable="false" />
+          <Property Name="carAC" Type="Boolean" />
+          <Property Name="carType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rentalCharge" Type="Int32" Nullable="false" />
+          <Property Name="mileageAllowed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="carStatus" Type="Boolean" />
+          <Property Name="dateAdded" Type="DateTime" Precision="3" />
+          <Property Name="addedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="category_master" Relationship="CarModel.FK__car_maste__categ__34C8D9D1" FromRole="car_master" ToRole="category_master" />
+        </EntityType>
+        <EntityContainer Name="CarMaster" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="car_master" EntityType="Self.car_master" />
+          <EntitySet Name="category_master" EntityType="CarModel.category_master" />
+          <AssociationSet Name="FK__car_maste__categ__34C8D9D1" Association="CarModel.FK__car_maste__categ__34C8D9D1">
+            <End Role="category_master" EntitySet="category_master" />
+            <End Role="car_master" EntitySet="car_master" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="category_master">
+          <Key>
+            <PropertyRef Name="categoryId" />
+          </Key>
+          <Property Name="categoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateAdded" Type="DateTime" Precision="3" />
+          <Property Name="addedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="modifiedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="car_master" Relationship="CarModel.FK__car_maste__categ__34C8D9D1" FromRole="category_master" ToRole="car_master" />
+        </EntityType>
+        <Association Name="FK__car_maste__categ__34C8D9D1">
+          <End Type="CarModel.category_master" Role="category_master" Multiplicity="1" />
+          <End Type="CarModel.car_master" Role="car_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_master">
+              <PropertyRef Name="categoryId" />
+            </Principal>
+            <Dependent Role="car_master">
+              <PropertyRef Name="categoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarModelStoreContainer" CdmEntityContainer="CarMaster">
+          <EntitySetMapping Name="car_master">
+            <EntityTypeMapping TypeName="CarModel.car_master">
+              <MappingFragment StoreEntitySet="car_master">
+                <ScalarProperty Name="carId" ColumnName="carId" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+                <ScalarProperty Name="carName" ColumnName="carName" />
+                <ScalarProperty Name="carModel" ColumnName="carModel" />
+                <ScalarProperty Name="carMake" ColumnName="carMake" />
+                <ScalarProperty Name="carDoors" ColumnName="carDoors" />
+                <ScalarProperty Name="carSeats" ColumnName="carSeats" />
+                <ScalarProperty Name="carAC" ColumnName="carAC" />
+                <ScalarProperty Name="carType" ColumnName="carType" />
+                <ScalarProperty Name="rentalCharge" ColumnName="rentalCharge" />
+                <ScalarProperty Name="mileageAllowed" ColumnName="mileageAllowed" />
+                <ScalarProperty Name="carStatus" ColumnName="carStatus" />
+                <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+                <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_master">
+            <EntityTypeMapping TypeName="CarModel.category_master">
+              <MappingFragment StoreEntitySet="category_master">
+                <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+                <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

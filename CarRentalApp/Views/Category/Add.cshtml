@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+
+<script>
+    function openModal() {
+        $("#myModal").modal();
+    }
+
+</script>
+<!--== Page Title Area Start ==-->
+<section id="page-title-area" class="section-padding overlay">
+    <div class="container">
+        <div class="row">
+            <!-- Page Title Start -->
+            <div class="col-lg-12">
+                <div class="section-title  text-center">
+                    <h2>Add Category</h2>
+                    <span class="title-line"><i class="fa fa-car"></i></span>
+                    <p>Add Category of Cars.</p>
+                </div>
+            </div>
+            <!-- Page Title End -->
+        </div>
+    </div>
+</section>
+<div class="contact-page-wrao section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 m-auto">
+                <div class="contact-form">
+                    <form action="Add">
+                        <div class="row margin-row" style="margin-bottom: 30px;">
+                            <div class="col-lg-4 col-md-4">
+                                <br />
+                                <div class="name-input">
+                                    Category Name <br />
+                                    <input type="text" name="categoryName" />
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+
+                                <div class="input-submit" style="">
+                                    <button type="submit" style="left:0px;margin-left:0px;margin-top:35px">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div style="min-height:175px"></div>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade modalPopup" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:10px">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Modal title</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Car Added Successfully.</h3>
+            </div>
+            <div class="modal-footer">
+
+                <div class="input-submit">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (ViewBag.JavaScriptFunction != null)
+{
+    <script type="text/javascript">
+            @Html.Raw(ViewBag.JavaScriptFunction)
+    </script>
+}
+

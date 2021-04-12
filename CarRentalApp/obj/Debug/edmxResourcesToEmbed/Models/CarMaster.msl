@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CarModelStoreContainer" CdmEntityContainer="CarMaster">
+    <EntitySetMapping Name="car_master">
+      <EntityTypeMapping TypeName="CarModel.car_master">
+        <MappingFragment StoreEntitySet="car_master">
+          <ScalarProperty Name="carId" ColumnName="carId" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="carName" ColumnName="carName" />
+          <ScalarProperty Name="carModel" ColumnName="carModel" />
+          <ScalarProperty Name="carMake" ColumnName="carMake" />
+          <ScalarProperty Name="carDoors" ColumnName="carDoors" />
+          <ScalarProperty Name="carSeats" ColumnName="carSeats" />
+          <ScalarProperty Name="carAC" ColumnName="carAC" />
+          <ScalarProperty Name="carType" ColumnName="carType" />
+          <ScalarProperty Name="rentalCharge" ColumnName="rentalCharge" />
+          <ScalarProperty Name="mileageAllowed" ColumnName="mileageAllowed" />
+          <ScalarProperty Name="carStatus" ColumnName="carStatus" />
+          <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+          <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category_master">
+      <EntityTypeMapping TypeName="CarModel.category_master">
+        <MappingFragment StoreEntitySet="category_master">
+          <ScalarProperty Name="modifiedOn" ColumnName="modifiedOn" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="addedBy" ColumnName="addedBy" />
+          <ScalarProperty Name="dateAdded" ColumnName="dateAdded" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
